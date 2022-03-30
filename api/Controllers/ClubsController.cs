@@ -23,7 +23,13 @@ namespace Api.Controllers
     public async Task<IActionResult> GetClubs()
     {
       var clubs = await _repo.GetClubs();
-
+      var clubDtos = _mapper.Map<IEnumerable<ClubDto>>(clubs);
+      return Ok(clubs);
+    }
+    [HttpGet]
+    public async Task<IActionResult> GetClubs()
+    {
+      var clubs = await _repo.GetClubs();
       var clubDtos = _mapper.Map<IEnumerable<ClubDto>>(clubs);
       return Ok(clubs);
     }

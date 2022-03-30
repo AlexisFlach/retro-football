@@ -1,5 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useReducer } from "react";
 import { Club } from "../../interfaces";
+import { clubsReducer } from "./ClubsReducer";
 
 const initialState = {
   clubs: [],
@@ -10,9 +11,12 @@ const initialState = {
 const ClubsContext = createContext<any>(initialState);
 
 export const ClubsProvider = ({ children }: { children: React.ReactNode }) => {
-  const [ clubs, setClubs ] = useState<Club[]>(initialState.clubs)
 
-  return <ClubsContext.Provider value={{ clubs, setClubs }}>
+  const [ state, dispatch ] = useReducer(clubsReducer, initialState);
+
+  // const [ clubs, setClubs ] = useState<Club[]>(initialState.clubs)
+
+  return <ClubsContext.Provider value={{ ...state, dispatch }}>
     {children}
   </ClubsContext.Provider >
 }

@@ -4,14 +4,19 @@ import { Club } from "../../interfaces"
 import { useClubs } from '../../hooks/useClubs'
 import { ClubItem } from './ClubItem'
 import { FlexRow } from "../styles/Flex.styled"
+import { getClubs } from "../../context/clubs/ClubsActions"
 
 export const ClubsList: React.FC = () => {
 
-  const { clubs } = useContext(ClubsContext)
+  const { clubs, dispatch } = useContext(ClubsContext)
 
-  const { getAllClubs } = useClubs();
+  // const { getAllClubs } = useClubs();
 
   useEffect(() => {
+    const getAllClubs = async () => {
+      const clubs = await getClubs()
+      dispatch({ type: 'GET_CLUBS', payload: clubs })
+    }
     getAllClubs()
   }, [])
 
