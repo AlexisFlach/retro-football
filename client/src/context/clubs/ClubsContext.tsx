@@ -2,7 +2,9 @@ import { createContext, useState } from "react";
 import { Club } from "../../interfaces";
 
 const initialState = {
-  clubs: []
+  clubs: [],
+  club: {},
+  players: []
 }
 
 const ClubsContext = createContext<any>(initialState);

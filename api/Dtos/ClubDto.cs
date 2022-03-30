@@ -1,3 +1,5 @@
+using api.Entities;
+
 namespace api.Dtos
 {
   public class ClubDto
@@ -6,8 +8,8 @@ namespace api.Dtos
     public string FullName { get; set; }
     public string NickName { get; set; }
 
-    public string Stadium { get; set; }
-    public string Nation { get; set; }
+    public Stadium Stadium { get; set; }
+    public Nation Nation { get; set; }
 
   }
 }

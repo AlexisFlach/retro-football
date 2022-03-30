@@ -12,8 +12,8 @@ namespace api.Extensions
         Name = club.Name,
         FullName = club.FullName,
         NickName = club.NickName,
-        Stadium = club.Stadium.StadiumName,
-        Nation = club.Nation.NationName
+        Stadium = club.Stadium,
+        Nation = club.Nation
       };
     }
   }

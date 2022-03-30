@@ -1,18 +1,19 @@
 import { Club } from "../../interfaces"
-
+import { ListItem } from "../styles/ListItem.styled"
+import { Link } from 'react-router-dom'
 type ClubItemProps = {
   club: Club
 }
 
 export const ClubItem = ({ club }: ClubItemProps) => {
   return (
-    <div>
-      <h4>{club.name}</h4>
-      <h6>{club.fullName}</h6>
-      <h6>{club.nickName}</h6>
-      <h6>{club.nation.nationName}</h6>
-      <h6>{club.stadium.stadiumName}</h6>
-    </div>
+
+    <ListItem>
+      <Link to={`/clubs/${club.name}`}>
+        <p>{club.name}</p>
+      </Link>
+      <p>({club.nation.nationName})</p>
+    </ListItem>
   )
 }
 
