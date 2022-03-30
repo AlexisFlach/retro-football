@@ -1,23 +1,20 @@
-import { useContext, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { getClubAndPlayers } from '../../context/clubs/ClubsActions'
-import ClubsContext from '../../context/clubs/ClubsContext'
+import { useContext, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { getClub } from '../../context/clubs/ClubsActions';
+import ClubsContext from '../../context/clubs/ClubsContext';
 
 const ClubPage = () => {
-  const { club, players, dispatch } = useContext(ClubsContext)
-  const params = useParams()
+  const { club, players, dispatch } = useContext(ClubsContext);
+  const params = useParams();
 
   useEffect(() => {
     const getdata = async () => {
+      const clubData = await getClub(Number(params.id));
+      dispatch({ type: 'GET_CLUB', payload: clubData.data });
+    };
+    getdata();
+  }, []);
+  return <div>{club.name}</div>;
+};
 
-      const data = await getClubAndPlayers("Juventus")
-      dispatch({ type: 'GET_CLUB_AND_PLAYERS', payload: data })
-    }
-    getdata()
-  })
-  return (
-    <div>ClubPage</div>
-  )
-}
-
-export default ClubPage
+export default ClubPage;

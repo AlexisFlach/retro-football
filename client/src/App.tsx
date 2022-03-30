@@ -40,7 +40,7 @@ const App = () => {
                 />
                 <Route path='/about' element={<About />} />
                 <Route path='/clubs' element={<ClubsList />} />
-                <Route path='/clubs:name' element={<ClubPage />} />
+                <Route path='/clubs/:id' element={<ClubPage />} />
               </Routes>
             </Container>
           </Router>

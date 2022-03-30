@@ -1,4 +1,5 @@
 using api.Dtos;
+using api.Entities;
 using Api.Repositories;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -20,18 +21,24 @@ namespace Api.Controllers
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetClubs()
+
+    public async Task<ActionResult<IEnumerable<ClubDto[]>>> GetClubs()
     {
+      System.Console.WriteLine($"--> Hit Clubs");
       var clubs = await _repo.GetClubs();
       var clubDtos = _mapper.Map<IEnumerable<ClubDto>>(clubs);
       return Ok(clubs);
     }
-    [HttpGet]
-    public async Task<IActionResult> GetClubs()
+    [HttpGet("{id}")]
+    public ActionResult<Club> GetClubById(int id)
     {
-      var clubs = await _repo.GetClubs();
-      var clubDtos = _mapper.Map<IEnumerable<ClubDto>>(clubs);
-      return Ok(clubs);
+      System.Console.WriteLine($"--> Hit Club: {id}");
+      var club = _repo.GetClub(id);
+      if (club != null)
+      {
+        return Ok(club);
+      }
+      return NotFound();
     }
   }
 }

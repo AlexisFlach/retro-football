@@ -15,6 +15,12 @@ namespace Api.Repositories
         _context = ctx;
       }
     }
+
+    public Club GetClub(int id)
+    {
+      return _context.Clubs.FirstOrDefault(p => p.Id == id);
+
+    }
     public async Task<IEnumerable<Club>> GetClubs()
     {
 

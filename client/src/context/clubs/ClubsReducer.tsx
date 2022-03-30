@@ -5,6 +5,11 @@ export const clubsReducer = (state: any, action: any) => {
         ...state,
         clubs: action.payload
       }
+    case 'GET_CLUB':
+      return {
+        ...state,
+        club: action.payload
+      }
     case 'GET_CLUB_AND_PLAYERS':
       return {
         ...state,
