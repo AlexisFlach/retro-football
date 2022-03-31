@@ -1,26 +1,33 @@
 import { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getClub, getClubAndPlayers } from '../../context/clubs/ClubsActions';
+import { getClubAndPlayers } from '../../context/clubs/ClubsActions';
 import ClubsContext from '../../context/clubs/ClubsContext';
+import { Player } from '../../interfaces';
+import { FlexRow } from '../styles/Flex.styled';
+import { ListItem } from '../styles/ListItem.styled';
 
 const ClubPage = () => {
   const { club, players, dispatch } = useContext(ClubsContext);
   const params = useParams();
-  console.log(params)
 
   useEffect(() => {
     const getdata = async () => {
       const clubData = await getClubAndPlayers(Number(params.id));
-      console.log(clubData)
       dispatch({ type: 'GET_CLUB_AND_PLAYERS', payload: clubData });
     };
     getdata();
   }, []);
   return (
     <div>
-      <h2>{club.name}</h2>
-      {players.map((p: any) => (
-        <p>{p.firstName}</p>
+      <FlexRow><h2>{club.name}</h2></FlexRow>
+      {players.map((p: Player) => (
+        <div>
+          <p>{p.firstName}</p>
+          <p>{p.lastName}</p>
+          <p>{p.shirtNumber}</p>
+        </div>
+
+
       ))}
 
     </div>

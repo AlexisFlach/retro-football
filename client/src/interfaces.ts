@@ -16,3 +16,10 @@ export interface Nation {
   id: number;
   nationName: string;
 }
+
+export interface Player {
+  playerId: number;
+  firstName: string;
+  lastName: string;
+  shirtNumber: number;
+}
