@@ -6,6 +6,7 @@ namespace Api.Repositories
   public interface IClubsRepository
   {
     Task<IEnumerable<Club>> GetClubs();
-    Club GetClub(int id);
+    Task<Club> GetClub(int id);
+    Task<List<Player>> GetClubPlayers(int id);
   }
 }

@@ -1,11 +1,10 @@
 using System.ComponentModel.DataAnnotations;
-
 namespace api.Entities
 {
   public class Club
   {
     [Key]
-    public int Id { get; set; }
+    public int ClubId { get; set; }
 
     public string Name { get; set; }
 
@@ -19,5 +18,7 @@ namespace api.Entities
 
     public Nation Nation { get; set; }
     public int NationId { get; set; }
+
+    public List<Player> Players { get; set; }
   }
 }

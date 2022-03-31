@@ -17,10 +17,12 @@ export const getClub = async (id: number) => {
 }
 
 export const getClubAndPlayers = async (id: number) => {
+  console.log("Trying to get club Players")
   const [ club, players ] = await Promise.all([
     api.get(`/api/clubs/${id}`),
     api.get(`/api/clubs/${id}/players`),
   ])
+  console.log(club, players)
 
   return { club: club.data, players: players.data }
 }

@@ -7,6 +7,7 @@ namespace api.Data
   public class ApiDbContext : IdentityDbContext
   {
     public virtual DbSet<Club> Clubs { get; set; }
+    public virtual DbSet<Player> Players { get; set; }
     public virtual DbSet<Nation> Nation { get; set; }
     public virtual DbSet<Stadium> Stadium { get; set; }
 

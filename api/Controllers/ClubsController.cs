@@ -29,16 +29,23 @@ namespace Api.Controllers
       var clubDtos = _mapper.Map<IEnumerable<ClubDto>>(clubs);
       return Ok(clubs);
     }
+    
     [HttpGet("{id}")]
-    public ActionResult<Club> GetClubById(int id)
+    public async Task<ActionResult<Club>> GetClubById(int id)
     {
-      System.Console.WriteLine($"--> Hit Club: {id}");
-      var club = _repo.GetClub(id);
+
+      var club = await _repo.GetClub(id);
       if (club != null)
       {
         return Ok(club);
       }
       return NotFound();
+    }
+    [Route("{id:int}/players")]
+    public async Task<ActionResult<List<Player>>> GetClubPlayers(int id)
+    {
+      var players = await _repo.GetClubPlayers(id);
+      return Ok(players);
     }
   }
 }

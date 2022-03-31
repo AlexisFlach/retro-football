@@ -20,7 +20,7 @@ export const ClubsList: React.FC = () => {
     getAllClubs()
   }, [])
 
-  const renderItem = (c: Club) => <ClubItem key={c.id} club={c} />
+  const renderItem = (c: Club) => <ClubItem key={c.clubId} club={c} />
 
   return (
     <div>

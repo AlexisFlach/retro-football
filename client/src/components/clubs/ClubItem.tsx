@@ -8,7 +8,7 @@ type ClubItemProps = {
 export const ClubItem = ({ club }: ClubItemProps) => {
   return (
     <ListItem>
-      <Link to={`/clubs/${club.id}`}>
+      <Link to={`/clubs/${club.clubId}`}>
         <p>{club.name}</p>
       </Link>
       <p>({club.nation.nationName})</p>
